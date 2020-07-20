@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Expense } from './expense';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,27 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+	btnText = 'Hello';
+	reason: string;
+	amount: number;
+	expenseList: Expense[];
+
+	constructor() {
+		this.expenseList = [];
+	}
+
+	addExpense() {
+		const newExpense = new Expense();
+		newExpense.reason = this.reason;
+		newExpense.amount = this.amount;
+
+		this.expenseList.push(newExpense);
+		this.clearExpense();
+	}
+
+	clearExpense() {
+		this.reason = '';
+		this.amount = null;
+	}
 
 }
